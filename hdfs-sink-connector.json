@@ -1,0 +1,26 @@
+{
+  "name": "hdfs-sink-connector",
+  "config": {
+    "connector.class": "io.confluent.connect.hdfs3.Hdfs3SinkConnector",
+    "tasks.max": "1",
+    "topics": "employee-topic",
+    "topics.dir": "/employee-data",
+    "hdfs.url": "hdfs://localhost:9000",
+    "hadoop.conf.dir": "/etc/hadoop/conf",
+    "format.class": "io.confluent.connect.hdfs3.json.JsonFormat",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter.schemas.enable": "false",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "partitioner.class": "io.confluent.connect.hdfs3.partitioner.TimeBasedPartitioner",
+    "partition.duration.ms": "3600000",
+    "path.format": "'year'=YYYY/'month'=MM/'day'=dd/'hour'=HH",
+    "locale": "US",
+    "timezone": "Asia/Ho_Chi_Minh",
+    "flush.size": "1000",
+    "rotate.interval.ms": "60000",
+    "rotate.schedule.interval.ms": "300000",
+    "schema.compatibility": "NONE",
+    "retry.backoff.ms": "5000",
+    "max.retries": "3"
+  }
+}
